@@ -1,0 +1,57 @@
+{ "locations": [
+    {
+    "id" : 0,
+    "professor": "Lucas",
+    "name" : "R2",
+    "lat": -28.703301269850343,
+    "lng": -49.411771009882074,
+    "day": "segunda",
+    "curso": "Ciência da computação",
+    "fase": "1ª"
+  }, {
+    "id" : 1,
+    "professor": "Matheus",
+    "name" : "S",
+    "lat": -28.704359259393982,
+    "lng": -49.41186529823589,
+    "day": "terça",
+    "curso": "Ciência da computação",
+    "fase": "2ª"
+  }, {
+    "id" : 2,
+    "professor": "André",
+    "name" : "XXA",
+    "lat": -28.703301269850343,
+    "lng": -49.411771009882074,
+    "day": "quarta",
+    "curso": "Ciência da computação",
+    "fase": "6ª"
+  }, {
+    "id" : 3,
+    "professor": "Lucas",
+    "name" : "XXB",
+    "lat": -28.703301269850343,
+    "lng": -49.411771009882074,
+    "day": "Quinta",
+    "curso": "Ciência da computação",
+    "fase": "4ª"
+  }, {
+    "id" : 4,
+    "professor": "Lucas",
+    "name" : "XXC",
+    "lat": -28.703301269850343,
+    "lng": -49.411771009882074,
+    "day": "sexta",
+    "curso": "Ciência da computação",
+    "fase": "2ª"
+  }, {
+    "id" : 5,
+    "professor": "Lucas",
+    "name": "O",
+    "lat": -28.703301269850343,
+    "lng": -49.411771009882074,
+    "day": "Sábado",
+    "curso": "Ciência da computação",
+    "fase": "9ª"
+  }]
+}
