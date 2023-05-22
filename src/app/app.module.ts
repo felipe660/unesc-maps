@@ -11,6 +11,7 @@ import { ArrayFilterPipe } from './components/pipes/array-filter.pipe';
 import { ArrayDayPipe } from './components/pipes/array-day.pipe';
 import { SelectMethodComponent } from './select-method/select-method.component';
 import { DayPageComponent } from './day-page/day-page.component';
+import { PaginationControlsComponentComponent } from './components/pagination-controls-component/pagination-controls-component.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DayPageComponent } from './day-page/day-page.component';
     ArrayDayPipe,
     SelectMethodComponent,
     DayPageComponent,
+    PaginationControlsComponentComponent,
   ],
   imports: [
     BrowserModule,
