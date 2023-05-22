@@ -1,8 +1,8 @@
-{ "locations": [
+{ "professores": [
     {
     "id" : 0,
-    "professor": "Lucas",
-    "name" : "R2",
+    "name": "Lucas",
+    "bloco" : "R2",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
     "day": "segunda",
@@ -10,8 +10,8 @@
     "fase": "1ª"
   }, {
     "id" : 1,
-    "professor": "Matheus",
-    "name" : "S",
+    "name": "Matheus",
+    "bloco" : "S",
     "lat": -28.704359259393982,
     "lng": -49.41186529823589,
     "day": "terça",
@@ -19,8 +19,8 @@
     "fase": "2ª"
   }, {
     "id" : 2,
-    "professor": "André",
-    "name" : "XXA",
+    "name": "André",
+    "bloco" : "XXA",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
     "day": "quarta",
@@ -28,17 +28,17 @@
     "fase": "6ª"
   }, {
     "id" : 3,
-    "professor": "Lucas",
-    "name" : "XXB",
+    "name": "Lucas",
+    "bloco" : "XXB",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
-    "day": "Quinta",
+    "day": "sexta",
     "curso": "Ciência da computação",
     "fase": "4ª"
   }, {
     "id" : 4,
-    "professor": "Lucas",
-    "name" : "XXC",
+    "name": "Lucas",
+    "bloco" : "XXC",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
     "day": "sexta",
@@ -46,8 +46,8 @@
     "fase": "2ª"
   }, {
     "id" : 5,
-    "professor": "Lucas",
-    "name": "O",
+    "name": "Lucas",
+    "bloco": "O",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
     "day": "Sábado",

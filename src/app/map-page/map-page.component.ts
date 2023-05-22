@@ -30,7 +30,7 @@ export class MapPageComponent implements OnInit {
   ds: google.maps.DirectionsService;
   dr: google.maps.DirectionsRenderer;
 
-  locations = enums.locations
+  professor = enums.professores
   myLoc: any;
 
   routeSub: Subscription;
@@ -67,8 +67,8 @@ export class MapPageComponent implements OnInit {
       };
 
       // this.destination = {
-      //   lat: this.locations[0].lat,
-      //   lng: this.locations[0].lng
+      //   lat: this.professor[0].lat,
+      //   lng: this.professor[0].lng
       // };
 
       // initialize the map container

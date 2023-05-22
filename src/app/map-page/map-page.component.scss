@@ -23,11 +23,11 @@
 }
 
 .map-loader {
-    background: url('./../../assets/imgs/youps_loader.svg');
+    background: url('./../../assets/imgs/three-dots.svg');
     background-repeat: no-repeat;
     max-width: 100%;
     background-position: center;
-    background-size: cover;
-    width: 130px;
-    height: 130px;
+    background-size: contain;
+    width: 180px;
+    height: 180px;
 }

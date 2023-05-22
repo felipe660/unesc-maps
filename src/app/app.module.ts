@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ArrayFilterPipe } from './components/pipes/array-filter.pipe';
 import { ArrayDayPipe } from './components/pipes/array-day.pipe';
+import { SelectMethodComponent } from './select-method/select-method.component';
+import { DayPageComponent } from './day-page/day-page.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ArrayDayPipe } from './components/pipes/array-day.pipe';
     HomePageComponent,
     ArrayFilterPipe,
     ArrayDayPipe,
+    SelectMethodComponent,
+    DayPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [ArrayDayPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

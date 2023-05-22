@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row mb-5 mt-5 text-center">
+        <h1>Deseja procurar por?</h1>
+    </div>
+    <div class="row mb-0 mt-5">
+        <div class="col-6 col-lg-2 offset-lg-4 p-4" style="height: 200px;">
+            <div class="text-center card" (click)="navigation('professores')">
+                <i class="fa-solid fa-chalkboard-user fa-lg card-mt"></i>
+                <p>Professores</p>
+            </div>
+        </div>
+        <div class="col-6 col-lg-2  p-4"  style="height: 200px;">
+            <div class="text-center card" (click)="navigation('materias')">
+                <i class="fa-solid fa-book fa-lg card-mt"></i>
+                <p>Matérias</p>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-6 col-lg-2 offset-lg-4 p-4"  style="height: 200px;">
+            <div class="text-center card" (click)="navigation('salas')">
+                <i class="fa-solid fa-door-open fa-lg card-mt"></i>
+                <p>Salas</p>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-2  p-4"  style="height: 200px;">
+            <div class="text-center card" (click)="navigation('cursos')">
+                <i class="fa-solid fa-graduation-cap fa-lg card-mt"></i>
+                <p>Cursos</p>
+            </div>
+        </div>
+    </div>
+</div>
