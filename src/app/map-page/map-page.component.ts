@@ -110,7 +110,7 @@ export class MapPageComponent implements OnInit {
     let request = {
       origin: this.source,
       destination: this.destination,
-      travelMode: google.maps.TravelMode.DRIVING
+      travelMode: google.maps.TravelMode.WALKING
     };
 
     this.ds.route(request, (response, status) => {
