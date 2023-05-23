@@ -12,6 +12,7 @@ import { ArrayDayPipe } from './components/pipes/array-day.pipe';
 import { SelectMethodComponent } from './select-method/select-method.component';
 import { DayPageComponent } from './day-page/day-page.component';
 import { PaginationControlsComponentComponent } from './components/pagination-controls-component/pagination-controls-component.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PaginationControlsComponentComponent } from './components/pagination-co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, 
+    NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ArrayDayPipe],

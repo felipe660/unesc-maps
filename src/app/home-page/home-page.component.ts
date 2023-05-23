@@ -17,10 +17,19 @@ export class HomePageComponent implements OnInit {
   refs: any;
   listaProfessores = [];
 
+  // pagination
+  currentIndex = -1;
+  title = '';
+
+  page = 1;
+  count = 0;
+  pageSize = 1;
+  pageSizes = [1, 2, 3];
+
   constructor(
     private router: Router,
     private route :ActivatedRoute,
-    private arrayDayPipe: ArrayDayPipe
+    private arrayDayPipe: ArrayDayPipe,
   ) { }
  
   ngOnInit(): void {
@@ -28,6 +37,7 @@ export class HomePageComponent implements OnInit {
       console.log(params)
       this.refs = params;
     });
+    console.log(this.professores)
     console.log(this.listaProfessores)
     this.filterByDay(this.refs);
   }
@@ -45,14 +55,13 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/map', location ]);
   }
 
-  // filtrar(palavraChave: string) {
-  //   if (palavraChave) {
-  //     palavraChave = palavraChave.toUpperCase();
+  handlePageChange(event): void {
+    this.page = event;
+  }
 
-  //     this.professores = this.professores.filter(a =>
-  //           a.name.toUpperCase().indexOf(palavraChave) >= 0
-  //       );
-  //   }
-  // }
+  handlePageSizeChange(event): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+  }
 
 }

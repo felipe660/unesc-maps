@@ -2,6 +2,24 @@
     {
     "id" : 0,
     "name": "Lucas",
+    "gender": "M",
+    "turmas": [{
+      "bloco" : "R2",
+      "lat": -28.703301269850343,
+      "lng": -49.411771009882074,
+      "day": "segunda",
+      "curso": "Ciência da computação",
+      "fase": "1ª"
+      },
+      {
+      "bloco" : "S",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "terça",
+      "curso": "Ciência da computação",
+      "fase": "2ª"
+      }
+    ],
     "bloco" : "R2",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
@@ -11,6 +29,7 @@
   }, {
     "id" : 1,
     "name": "Matheus",
+    "gender": "M",
     "bloco" : "S",
     "lat": -28.704359259393982,
     "lng": -49.41186529823589,
@@ -20,6 +39,7 @@
   }, {
     "id" : 2,
     "name": "André",
+    "gender": "M",
     "bloco" : "XXA",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
@@ -28,7 +48,8 @@
     "fase": "6ª"
   }, {
     "id" : 3,
-    "name": "Lucas",
+    "name": "Jonas",
+    "gender": "M",
     "bloco" : "XXB",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
@@ -37,7 +58,8 @@
     "fase": "4ª"
   }, {
     "id" : 4,
-    "name": "Lucas",
+    "name": "Maria",
+    "gender": "F",
     "bloco" : "XXC",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
@@ -46,11 +68,12 @@
     "fase": "2ª"
   }, {
     "id" : 5,
-    "name": "Lucas",
+    "name": "Clara",
+    "gender": "F",
     "bloco": "O",
     "lat": -28.703301269850343,
     "lng": -49.411771009882074,
-    "day": "Sábado",
+    "day": "sábado",
     "curso": "Ciência da computação",
     "fase": "9ª"
   }]
