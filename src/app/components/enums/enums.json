@@ -1,80 +1,200 @@
 { "professores": [
     {
     "id" : 0,
-    "name": "Lucas",
+    "name": "Lucas Silva Neto",
     "gender": "M",
     "turmas": [{
       "bloco" : "R2",
       "lat": -28.703301269850343,
       "lng": -49.411771009882074,
-      "day": "segunda",
+      "day": "Segunda",
       "curso": "Ciência da computação",
-      "fase": "1ª"
+      "fase": "5ª",
+      "sala": "008",
+      "cadeira":"Engenharia de Software"
       },
       {
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
-      "day": "terça",
+      "day": "Terça",
       "curso": "Ciência da computação",
-      "fase": "2ª"
+      "fase": "3ª",
+      "sala": "007",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "S",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quarta",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "108",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quinta",
+      "curso": "Ciência da computação",
+      "fase": "5ª",
+      "sala": "201",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sexta",
+      "curso": "Ciência da computação",
+      "fase": "3ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sábado",
+      "curso": "Ciência da computação",
+      "fase": "3ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
       }
-    ],
-    "bloco" : "R2",
-    "lat": -28.703301269850343,
-    "lng": -49.411771009882074,
-    "day": "segunda",
-    "curso": "Ciência da computação",
-    "fase": "1ª"
+
+    ]
   }, {
     "id" : 1,
     "name": "Matheus",
     "gender": "M",
-    "bloco" : "S",
-    "lat": -28.704359259393982,
-    "lng": -49.41186529823589,
-    "day": "terça",
-    "curso": "Ciência da computação",
-    "fase": "2ª"
-  }, {
-    "id" : 2,
-    "name": "André",
-    "gender": "M",
-    "bloco" : "XXA",
-    "lat": -28.703301269850343,
-    "lng": -49.411771009882074,
-    "day": "quarta",
-    "curso": "Ciência da computação",
-    "fase": "6ª"
-  }, {
-    "id" : 3,
-    "name": "Jonas",
-    "gender": "M",
-    "bloco" : "XXB",
-    "lat": -28.703301269850343,
-    "lng": -49.411771009882074,
-    "day": "sexta",
-    "curso": "Ciência da computação",
-    "fase": "4ª"
-  }, {
-    "id" : 4,
+    "turmas": [{
+      "bloco" : "R2",
+      "lat": -28.703301269850343,
+      "lng": -49.411771009882074,
+      "day": "Segunda",
+      "curso": "Ciência da computação",
+      "fase": "1ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "R2",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Terça",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "102",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXC",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quarta",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXB",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quinta",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "201",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXA",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sexta",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "S",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sábado",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      }
+    ]
+  },
+  {
+    "id" : 0,
     "name": "Maria",
     "gender": "F",
-    "bloco" : "XXC",
-    "lat": -28.703301269850343,
-    "lng": -49.411771009882074,
-    "day": "sexta",
-    "curso": "Ciência da computação",
-    "fase": "2ª"
-  }, {
-    "id" : 5,
-    "name": "Clara",
-    "gender": "F",
-    "bloco": "O",
-    "lat": -28.703301269850343,
-    "lng": -49.411771009882074,
-    "day": "sábado",
-    "curso": "Ciência da computação",
-    "fase": "9ª"
+    "turmas": [{
+      "bloco" : "R2",
+      "lat": -28.703301269850343,
+      "lng": -49.411771009882074,
+      "day": "Segunda",
+      "curso": "Ciência da computação",
+      "fase": "1ª",
+      "sala": "008",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "S",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Terça",
+      "curso": "Ciência da computação",
+      "fase": "3ª",
+      "sala": "007",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "S",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quarta",
+      "curso": "Ciência da computação",
+      "fase": "2ª",
+      "sala": "108",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Quinta",
+      "curso": "Ciência da computação",
+      "fase": "5ª",
+      "sala": "201",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sexta",
+      "curso": "Ciência da computação",
+      "fase": "3ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      },
+      {
+      "bloco" : "XXI",
+      "lat": -28.704359259393982,
+      "lng": -49.41186529823589,
+      "day": "Sábado",
+      "curso": "Ciência da computação",
+      "fase": "3ª",
+      "sala": "101",
+      "cadeira":"Engenharia de Software"
+      }
+    ]
   }]
 }

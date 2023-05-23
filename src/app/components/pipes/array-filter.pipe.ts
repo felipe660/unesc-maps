@@ -10,9 +10,7 @@ export class ArrayFilterPipe implements PipeTransform {
         filtro = filtro.toUpperCase();
         
         return value.filter(a =>
-            a.name.toUpperCase().indexOf(filtro) >= 0 || a.bloco.toUpperCase().indexOf(filtro) >= 0 
-            || a.curso.toUpperCase().indexOf(filtro) >= 0 || a.fase.toUpperCase().indexOf(filtro) >= 0
-        );
+            a.name.toUpperCase().indexOf(filtro) >= 0);
     } else {
         // Quando filtro for vazio ou nulo,
         // retornamos o próprio array

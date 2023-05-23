@@ -24,7 +24,8 @@ export class HomePageComponent implements OnInit {
   page = 1;
   count = 0;
   pageSize = 1;
-  pageSizes = [1, 2, 3];
+  pageSizes = [1, 2, 4];
+  pageDay: string = "Segunda";
 
   constructor(
     private router: Router,
@@ -37,15 +38,15 @@ export class HomePageComponent implements OnInit {
       console.log(params)
       this.refs = params;
     });
-    console.log(this.professores)
-    console.log(this.listaProfessores)
     this.filterByDay(this.refs);
   }
 
   filterByDay(ref): void{
     for(var i in this.professores ){
-      if(this.professores[i].day  === ref.day){
-        this.listaProfessores.push(this.professores[i]);
+      for(var x in this.professores[i].turmas){
+        if(this.professores[i].turmas[x].day === ref.day){
+          this.listaProfessores.push(this.professores[i]);
+        } 
       }
     }
     console.log(this.listaProfessores);
@@ -56,6 +57,18 @@ export class HomePageComponent implements OnInit {
   }
 
   handlePageChange(event): void {
+    if(event === 1)
+    this.pageDay = "Segunda-feira"
+    if(event === 2)
+    this.pageDay = "Terça-feira"
+    if(event === 3)
+    this.pageDay = "Quarta-feira"
+    if(event === 4)
+    this.pageDay = "Quinta-feira"
+    if(event === 5)
+    this.pageDay = "Sexta-feira"
+    if(event === 6)
+    this.pageDay = "Sábado"
     this.page = event;
   }
 
