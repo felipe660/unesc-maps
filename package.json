@@ -1,4 +1,5 @@
 {
+  "homepage" : "https://something.github.io/",
   "name": "unesc-maps",
   "version": "0.0.0",
   "scripts": {
