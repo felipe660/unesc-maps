@@ -85,7 +85,7 @@ export class MapPageComponent implements OnInit {
       var markerStart = new google.maps.Marker({
         position: this.source,
         icon: {
-          url: './assets/imgs/pin.svg',
+          url: './assets/imgs/map-pin.svg',
           anchor: new google.maps.Point(35,10),
           scaledSize: new google.maps.Size(100, 100)
         },
