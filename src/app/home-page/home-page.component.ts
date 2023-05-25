@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   filtro: string = '';
   routeSub: Subscription;
   refs: any;
-  listaProfessores = [];
+  listaProfessoresByDay = [];
 
   // pagination
   currentIndex = -1;
@@ -23,9 +23,10 @@ export class HomePageComponent implements OnInit {
 
   page = 1;
   count = 0;
-  pageSize = 1;
-  pageSizes = [1, 2, 4];
+  pageSize = 6;
+  pageSizes = [2, 4, 6];
   pageDay: string = "Segunda";
+  newList: any = [{}];
 
   constructor(
     private router: Router,
@@ -38,18 +39,27 @@ export class HomePageComponent implements OnInit {
       console.log(params)
       this.refs = params;
     });
-    this.filterByDay(this.refs);
+    this.createList();
   }
 
-  filterByDay(ref): void{
-    for(var i in this.professores ){
-      for(var x in this.professores[i].turmas){
-        if(this.professores[i].turmas[x].day === ref.day){
-          this.listaProfessores.push(this.professores[i]);
-        } 
+  // filterByDay(ref): void{
+  //   for(var i in this.professores ){
+  //     for(var x in this.professores[i].turmas){
+  //       if(this.professores[i].turmas[x].day === ref.day){
+  //         this.listaProfessores.push(this.professores[i]);
+  //       } 
+  //     }
+  //   }
+  // }
+
+  createList():void {
+    console.log(this.professores);
+    for(let i = 0; i < this.professores.length; i++){
+      for(let x = 0; x < this.professores[i]?.turmas.length; x++){
+        this.newList[x] = this.professores[i]?.turmas[x]
       }
     }
-    console.log(this.listaProfessores);
+    console.log(this.newList)
   }
 
   selectLocation(location: any): void {

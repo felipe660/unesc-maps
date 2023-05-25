@@ -1,8 +1,8 @@
 {
   "name": "Unesc Maps",
   "short_name": "Unesc Maps",
-  "theme_color": "#4B290C",
-  "background_color": "#4B290C",
+  "theme_color": "#45AF7C",
+  "background_color": "#45AF7C",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

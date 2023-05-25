@@ -24,8 +24,8 @@
 								<th class="text-center"><span>Localização</span></th>
 							</tr>
 						</thead>
-						<tbody *ngFor="let professor of listaProfessores | arrayFilter: filtro">
-							<tr *ngFor=" let prof of professor.turmas | paginate: { itemsPerPage: pageSize, currentPage: page}">
+						<tbody *ngFor="let professor of professores">
+							<tr *ngFor=" let prof of professor.turmas | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
 								<td >
 									<!-- <img *ngIf="professor.gender === 'M' " src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""> -->
 									<!-- <img *ngIf="professor.gender === 'F' " src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""> -->
@@ -396,7 +396,7 @@
 				</div>
 				<div class="row">
 					<div class="offset-2 col-8 col-md-4 offset-md-4">
-						<h4 class="text-center">{{this.pageDay}}</h4>
+						<!-- <h4 class="text-center">{{this.pageDay}}</h4> -->
 						<pagination-controls
 						  previousLabel="Prev"
 						  nextLabel="Next"

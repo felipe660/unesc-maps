@@ -4,6 +4,7 @@
     "name": "Lucas Silva Neto",
     "gender": "M",
     "turmas": [{
+      "name": "Lucas Silva Neto",
       "bloco" : "R2",
       "lat": -28.703301269850343,
       "lng": -49.411771009882074,
@@ -14,6 +15,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Lucas Silva Neto",
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -24,6 +26,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Lucas Silva Neto",
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -34,6 +37,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Lucas Silva Neto",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -44,6 +48,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+        "name": "Lucas Silva Neto",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -54,6 +59,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Lucas Silva Neto",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -70,6 +76,7 @@
     "name": "Matheus",
     "gender": "M",
     "turmas": [{
+      "name": "Matheus",
       "bloco" : "R2",
       "lat": -28.703301269850343,
       "lng": -49.411771009882074,
@@ -80,6 +87,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Matheus",
       "bloco" : "R2",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -90,6 +98,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Matheus",
       "bloco" : "XXC",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -100,6 +109,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Matheus",
       "bloco" : "XXB",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -110,6 +120,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Matheus",
       "bloco" : "XXA",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -120,6 +131,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Matheus",
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -136,6 +148,7 @@
     "name": "Maria",
     "gender": "F",
     "turmas": [{
+      "name": "Maria",
       "bloco" : "R2",
       "lat": -28.703301269850343,
       "lng": -49.411771009882074,
@@ -146,6 +159,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Maria",
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -156,6 +170,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Maria",
       "bloco" : "S",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -166,6 +181,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Maria",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -176,6 +192,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Maria",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
@@ -186,6 +203,7 @@
       "cadeira":"Engenharia de Software"
       },
       {
+      "name": "Maria",
       "bloco" : "XXI",
       "lat": -28.704359259393982,
       "lng": -49.41186529823589,
