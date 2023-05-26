@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import enums from '../components/enums/enums.json'
 import {} from 'googlemaps';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,7 +29,6 @@ export class MapPageComponent implements OnInit {
   ds: google.maps.DirectionsService;
   dr: google.maps.DirectionsRenderer;
 
-  professor = enums.professores
   myLoc: any;
 
   routeSub: Subscription;
@@ -92,6 +90,14 @@ export class MapPageComponent implements OnInit {
         map: this.map
       });
 
+      markerStart.addListener("click", (event: any) =>{
+        let infoWindow = new google.maps.InfoWindow({
+          content:"hello </br>  world"
+        });
+
+        infoWindow.open(this.map, markerStart)
+      });
+
       var destinationMarker = new google.maps.Marker({
         position: this.destination,
         icon: {
@@ -100,6 +106,14 @@ export class MapPageComponent implements OnInit {
           scaledSize: new google.maps.Size(100, 100)
         },
         map: this.map
+      });
+
+      destinationMarker.addListener("click", (event: any) =>{
+        let infoWindow = new google.maps.InfoWindow({
+          content:"hello </br>  world"
+        });
+
+        infoWindow.open(this.map, destinationMarker)
       });
 
       this.setRoutePolyline();

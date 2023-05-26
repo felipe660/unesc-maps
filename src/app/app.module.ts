@@ -13,6 +13,7 @@ import { SelectMethodComponent } from './select-method/select-method.component';
 import { DayPageComponent } from './day-page/day-page.component';
 import { PaginationControlsComponentComponent } from './components/pagination-controls-component/pagination-controls-component.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ClassPageComponent } from './class-page/class-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SelectMethodComponent,
     DayPageComponent,
     PaginationControlsComponentComponent,
+    ClassPageComponent,
   ],
   imports: [
     BrowserModule,

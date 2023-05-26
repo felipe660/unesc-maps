@@ -1,3 +1,4 @@
+import { ClassPageComponent } from './class-page/class-page.component';
 import { DayPageComponent } from './day-page/day-page.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -8,16 +9,12 @@ import { SelectMethodComponent } from './select-method/select-method.component';
 
 
 const routes: Routes = [
-  { component: MapPageComponent, path: 'map',pathMatch: 'full'},
-  { component: HomePageComponent, path: 'home-page',pathMatch: 'full'},
+  { component: SelectMethodComponent, path: ''},
   { component: SplashScreenComponent, path: 'splash-screen'},
-  { component: SelectMethodComponent, path: 'method'},
+  { component: HomePageComponent, path: 'home-page'},
+  { component: ClassPageComponent, path:'class-page'},
+  { component: MapPageComponent, path: 'map'},
   { component: DayPageComponent, path:'day'},
-  {
-    path: '',
-    redirectTo: '/method',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({

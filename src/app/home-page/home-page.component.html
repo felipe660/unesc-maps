@@ -1,10 +1,15 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 	<div class="row">
+		<div class="col-2 pt-2">
+			<button (click)="goBack()" type="button" class="btn btn-light ps-0 "><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 30px;"></i></button>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-12">
 			<div class="main-box clearfix">
 				<div class="table-responsive">
-					<div class="mt-5 mb-5">
+					<div class="mt-1 mb-5">
 						<div class="d-flex">
 							<input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" (keyup)="filtro = $event.target.value">
 							<!-- <input style="width: 100%;" type="search" placeholder="busca..." (keyup)="filtro = $event.target.value"> -->
@@ -24,19 +29,20 @@
 								<th class="text-center"><span>Localização</span></th>
 							</tr>
 						</thead>
-						<tbody *ngFor="let professor of professores">
-							<tr *ngFor=" let prof of professor.turmas | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
+						<tbody>
+							<tr  *ngFor="let professor of professores | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
 								<td >
 									<!-- <img *ngIf="professor.gender === 'M' " src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""> -->
 									<!-- <img *ngIf="professor.gender === 'F' " src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""> -->
 									<span href="#" class="user-link me-0">{{professor.name}}</span>
-									<span class="user-subhead">Curso: {{prof.curso}}</span><br/>
-									<span class="user-subhead me-2">{{prof.cadeira}} / <span style="font-weight: bold;">{{prof.fase}} Fase</span></span>
+									<span class="user-subhead">Curso: {{professor.curso}}</span><br/>
+									<span class="user-subhead me-2">{{professor.cadeira}} / <span style="font-weight: bold;">{{professor.fase}} Fase</span></span>
 									<div>
-										<span class="user-subhead me-2">Bloco: {{prof.bloco}}</span>
-										<span class="user-subhead me-2">Sala: {{prof.sala}}</span>
-										<span *ngIf="prof.day != 'Sábado' " class="user-subhead me-2">Dia: {{prof.day}}-feira</span>
-										<span *ngIf="prof.day === 'Sábado' " class="user-subhead me-2">Dia: {{prof.day}}</span>
+										<span class="user-subhead me-2">Bloco: {{professor.bloco}}</span>
+										<span class="user-subhead me-2">Sala: {{professor.sala}}</span>
+										<span class="user-subhead me-2">Código: {{professor.codigo}}</span>
+										<span *ngIf="professor.day != 'Sábado' " class="user-subhead me-2">Dia: {{professor.day}}-feira</span>
+										<span *ngIf="professor.day === 'Sábado' " class="user-subhead me-2">Dia: {{professor.day}}</span>
 									</div>
 								</td>
 								<!-- <td class="text-center">
@@ -46,7 +52,7 @@
 								<td class="text-center">
 								</td> -->
 								<td class="text-center" style="width: 20%;">
-									<a class="table-link" (click)="selectLocation(prof)">
+									<a class="table-link" (click)="selectLocation(professor)">
 										<span class="fa-stack">
 											<i class="fa fa-square fa-stack-2x"></i>
 											<!-- <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i> -->
@@ -404,16 +410,16 @@
 						  (pageChange)="handlePageChange($event)"
 						></pagination-controls>
 					</div>
-					<!-- <div class="col-2">
+					<div class="col-2">
 						<div>
-							Items per Page:
+							<!-- Items per Page: -->
 							<select (change)="handlePageSizeChange($event)">
 							  <option *ngFor="let size of pageSizes" [value]="size">
-								{{ size * 2 }}
+								{{ size }}
 							  </option>
 							</select>
 						  </div>
-					</div> -->
+					</div>
 			</div>
 			
 		</div>

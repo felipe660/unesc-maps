@@ -1,7 +1,7 @@
 import { ArrayDayPipe } from './../components/pipes/array-day.pipe';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import enums from '../components/enums/enums.json'
+import turmas from '../components/enums/turmas.json'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,22 +11,19 @@ import { Subscription } from 'rxjs';
 })
 export class HomePageComponent implements OnInit {
 
-  professores = enums.professores;
+  professores = turmas.turmas;
   filtro: string = '';
   routeSub: Subscription;
   refs: any;
-  listaProfessoresByDay = [];
 
   // pagination
-  currentIndex = -1;
+  currentIndex = 1;
   title = '';
 
   page = 1;
-  count = 0;
-  pageSize = 6;
-  pageSizes = [2, 4, 6];
+  pageSize = 5;
+  pageSizes = [5, 10, 20];
   pageDay: string = "Segunda";
-  newList: any = [{}];
 
   constructor(
     private router: Router,
@@ -39,31 +36,15 @@ export class HomePageComponent implements OnInit {
       console.log(params)
       this.refs = params;
     });
-    this.createList();
   }
 
-  // filterByDay(ref): void{
-  //   for(var i in this.professores ){
-  //     for(var x in this.professores[i].turmas){
-  //       if(this.professores[i].turmas[x].day === ref.day){
-  //         this.listaProfessores.push(this.professores[i]);
-  //       } 
-  //     }
-  //   }
-  // }
-
-  createList():void {
-    console.log(this.professores);
-    for(let i = 0; i < this.professores.length; i++){
-      for(let x = 0; x < this.professores[i]?.turmas.length; x++){
-        this.newList[x] = this.professores[i]?.turmas[x]
-      }
-    }
-    console.log(this.newList)
-  }
 
   selectLocation(location: any): void {
-    this.router.navigate(['/map', location ]);
+    this.router.navigate(['/map', {lat: location.lat, lng: location.lng} ]);
+  }
+
+  goBack():void{
+    this.router.navigate(['/']);
   }
 
   handlePageChange(event): void {
