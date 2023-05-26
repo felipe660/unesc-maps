@@ -3,4 +3,17 @@
     <div class="map-loader-container" *ngIf="!mapLoaded">
         <div class="map-loader"></div>
     </div>
+    <div class="map-pill">
+        <div class="pill-logo">
+
+        </div>
+        <div class="pill-content">
+            <div>
+                <span class="pill-labels">Seu destino: </span>
+                <span class="pill-distance-time">
+                    {{distance}} / {{time}}
+                </span>
+            </div>
+        </div>
+    </div>
 </div>

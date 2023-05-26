@@ -26,6 +26,9 @@ export class MapPageComponent implements OnInit {
     zoom: 18
   }
 
+  time: string = ''
+  distance: string = ''
+
   ds: google.maps.DirectionsService;
   dr: google.maps.DirectionsRenderer;
 
@@ -149,6 +152,9 @@ export class MapPageComponent implements OnInit {
 
       if (status == google.maps.DirectionsStatus.OK) {
         this.dr.setDirections(response);
+
+        this.distance = response.routes[0].legs[0].distance.text;
+        this.time = response.routes[0].legs[0].duration.text;
       }
     })
   }
