@@ -16,8 +16,8 @@
   {
   "name": "Valter",
   "bloco" : "XXIA",
-  "lat": -28.704359259393982,
-  "lng": -49.41186529823589,
+  "lat": -28.70228575678123,
+  "lng": -49.40835788230003,
   "day": "Terça",
   "curso": "Ciência da computação",
   "fase": "5ª",
@@ -28,8 +28,8 @@
   {
   "name": "Matheus",
   "bloco" : "XXIA",
-  "lat": -28.704359259393982,
-  "lng": -49.41186529823589,
+  "lat": -28.70228575678123,
+  "lng": -49.40835788230003,
   "day": "Quarta",
   "curso": "Ciência da computação",
   "fase": "5ª",
@@ -40,8 +40,8 @@
   {
   "name": "Marlon",
   "bloco" : "XXIA",
-  "lat": -28.704359259393982,
-  "lng": -49.41186529823589,
+  "lat": -28.70228575678123,
+  "lng": -49.40835788230003,
   "day": "Quinta",
   "curso": "Ciência da computação",
   "fase": "5ª",
@@ -52,8 +52,8 @@
   {
   "name": "André",
   "bloco" : "XXIA",
-  "lat": -28.704359259393982,
-  "lng": -49.41186529823589,
+  "lat": -28.70228575678123,
+  "lng": -49.40835788230003,
   "day": "Sexta",
   "curso": "Ciência da computação",
   "fase": "3ª",
@@ -64,8 +64,8 @@
   {
   "name": "Fernanda",
   "bloco" : "XXIA",
-  "lat": -28.704359259393982,
-  "lng": -49.41186529823589,
+  "lat": -28.70228575678123,
+  "lng": -49.40835788230003,
   "day": "Sábado",
   "curso": "Ciência da computação",
   "fase": "5ª",
@@ -123,7 +123,7 @@
   },
   {
   "name": "Matheus",
-  "bloco" : "XXA",
+  "bloco" : "XXC",
   "lat": -28.704359259393982,
   "lng": -49.41186529823589,
   "day": "Sexta",
@@ -183,7 +183,7 @@
   },
   {
   "name": "Maria",
-  "bloco" : "XXI",
+  "bloco" : "XXIC",
   "lat": -28.704359259393982,
   "lng": -49.41186529823589,
   "day": "Quinta",
@@ -195,7 +195,7 @@
   },
   {
   "name": "Maria",
-  "bloco" : "XXI",
+  "bloco" : "XXIC",
   "lat": -28.704359259393982,
   "lng": -49.41186529823589,
   "day": "Sexta",
@@ -207,7 +207,7 @@
   },
   {
   "name": "Maria",
-  "bloco" : "XXI",
+  "bloco" : "XXIC",
   "lat": -28.704359259393982,
   "lng": -49.41186529823589,
   "day": "Sábado",
