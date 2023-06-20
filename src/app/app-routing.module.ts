@@ -1,3 +1,4 @@
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 import { ClassPageComponent } from './class-page/class-page.component';
 import { DayPageComponent } from './day-page/day-page.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { component: ClassPageComponent, path:'class-page'},
   { component: MapPageComponent, path: 'map'},
   { component: DayPageComponent, path:'day'},
+  { component: RegisterTeacherComponent, path:'registerTeacher'},
 ];
 
 @NgModule({

@@ -14,6 +14,9 @@ import { DayPageComponent } from './day-page/day-page.component';
 import { PaginationControlsComponentComponent } from './components/pagination-controls-component/pagination-controls-component.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ClassPageComponent } from './class-page/class-page.component';
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,13 @@ import { ClassPageComponent } from './class-page/class-page.component';
     DayPageComponent,
     PaginationControlsComponentComponent,
     ClassPageComponent,
+    RegisterTeacherComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
     NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

@@ -18,11 +18,15 @@ export class SelectMethodComponent implements OnInit {
   }
 
   navigation(method): void {
+    console.log(method)
     if(method === 'professores'){
       this.router.navigate(['/home-page'])
     }
     if(method === 'salas'){
       this.router.navigate(['/class-page'])
+    }
+    if(method === 'registerTeacher'){
+      this.router.navigate(['/registerTeacher'])
     }
   }
 
