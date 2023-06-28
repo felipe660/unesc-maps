@@ -1,8 +1,10 @@
+import { RegisterDisciplineService } from './../register-teacher/register-discipline.service';
 import { ArrayDayPipe } from './../components/pipes/array-day.pipe';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import turmas from '../components/enums/turmas.json'
 import { Subscription } from 'rxjs';
+import { RegisterTeacherService } from '../register-teacher/register-teacher.service';
 
 @Component({
   selector: 'app-home-page',
@@ -24,20 +26,63 @@ export class HomePageComponent implements OnInit {
   pageSize = 5;
   pageSizes = [5, 10, 20];
   pageDay: string = "Segunda";
+  errorMessage: any;
+  isSignUpFailed: boolean;
+  professor: any;
 
   constructor(
     private router: Router,
     private route :ActivatedRoute,
     private arrayDayPipe: ArrayDayPipe,
+    public registerTeacherService: RegisterTeacherService,
+    public registerDisciplineService: RegisterDisciplineService
   ) { }
  
   ngOnInit(): void {
+    this.getTeachers();
+    this.getDisciplines();
     this.routeSub = this.route.params.subscribe((params) => {
       console.log(params)
       this.refs = params;
     });
   }
 
+  getDisciplinesByProfessor(id): void {
+    this.registerTeacherService.getById(id).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getDisciplines(): void {
+    this.registerDisciplineService.get().subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getTeachers(): void {
+    this.registerTeacherService.get().subscribe(
+      data => {
+        console.log(data);
+        this.professor = data;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
 
   selectLocation(location: any): void {
     this.router.navigate(['/map', {lat: location.lat, lng: location.lng} ]);

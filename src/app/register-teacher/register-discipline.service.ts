@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterTeacherService {
+export class RegisterDisciplineService {
 
-  readonly BASE_URI = `https://unesc-app-help-freshman.vercel.app/teacher`;
+  readonly BASE_URI = `https://unesc-app-help-freshman.vercel.app/discipline`;
 
   constructor(private http: HttpClient) { }
+
   saveOrUpdate(dto: any): any {
     if (dto.id) {
         return this.http.put(`${this.BASE_URI}/${dto.id}`, dto);
@@ -20,12 +21,4 @@ export class RegisterTeacherService {
   get(): any {
     return this.http.get(`${this.BASE_URI}`);
   }
-
-  getById(id: string): any {
-    return this.http.get(`${this.BASE_URI}/${id}`);
-  }
-  
-  // remove(id: number): any {
-  //   return this.http.delete(`${this.BASE_URI}/${id}`);
-  // }
 }

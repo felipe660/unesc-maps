@@ -9,16 +9,10 @@ import { RegisterTeacherService } from './register-teacher.service';
 export class RegisterTeacherComponent implements OnInit {
 
   form: any = {
-    id: null,
-    username: null,
-    email: null,
-    password: null
+    name: null,
   };
   formCourse: any = {
-    id: null,
-    username: null,
-    email: null,
-    password: null
+    name: null,
   };
 
   isSuccessful = false;
@@ -28,6 +22,19 @@ export class RegisterTeacherComponent implements OnInit {
   constructor(private registerTeacherService: RegisterTeacherService) { }
 
   ngOnInit(): void {
+    this.getTeachers();
+  }
+
+  getTeachers(): void {
+    this.registerTeacherService.get().subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
   onSubmit(): void {

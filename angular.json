@@ -69,10 +69,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "proxyConfig": "src/proxy.conf.json",
             "browserTarget": "unesc-maps:build"
           },
           "configurations": {
             "production": {
+              "proxyConfig": "src/proxy.conf.json",
               "browserTarget": "unesc-maps:build:production"
             }
           }
