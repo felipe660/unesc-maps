@@ -23,37 +23,23 @@
 						<thead>
 							<tr>
 								<th><span>Professor</span></th>
-								<!-- <th class="text-center"><span>Fase</span></th>
-								<th class="text-center"><span>Bloco</span></th>
-								<th class="text-center"><span>Dia</span></th> -->
 								<th class="text-center"><span>Localização</span></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr  *ngFor="let prof of professor | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
+							<tr  *ngFor="let disc of discipline| paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
 								<td >
-									<!-- <img *ngIf="professor.gender === 'M' " src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""> -->
-									<!-- <img *ngIf="professor.gender === 'F' " src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""> -->
-									<span href="#" class="user-link me-0">{{prof.name}}</span>
-									<!-- <span class="user-subhead">Curso: {{this.getDisciplinesByProfessor(prof._id)}}</span><br/> -->
-									<span class="user-subhead">Curso: {{prof._id}}</span><br/>
-									<!-- <span class="user-subhead me-2">{{professor.cadeira}} / <span style="font-weight: bold;">{{professor.fase}} Fase</span></span> -->
+									<span href="#" class="user-link me-0">{{disc?.teacherName}}</span>
+									<span class="user-subhead">Disciplina: {{disc?.name}}</span><br/>
+									<span class="user-subhead me-2">Curso: {{disc.course?.name}}</span>
 									<div>
-										<!-- <span class="user-subhead me-2">Bloco: {{professor.bloco}}</span> -->
-										<!-- <span class="user-subhead me-2">Sala: {{professor.sala}}</span> -->
-										<!-- <span class="user-subhead me-2">Código: {{professor.codigo}}</span> -->
-										<!-- <span *ngIf="professor.day != 'Sábado' " class="user-subhead me-2">Dia: {{professor.day}}-feira</span> -->
-										<!-- <span *ngIf="professor.day === 'Sábado' " class="user-subhead me-2">Dia: {{professor.day}}</span> -->
+									<span class="user-subhead">Dia: {{disc?.day}}</span><br/>
+										<span class="user-subhead me-2">Horario: Dás {{disc.starting_time}} até {{disc.final_time}}</span>
+										<span class="user-subhead me-2">Sala: {{disc.classroom?.name}} - {{disc.classroom?.observation}}</span>
 									</div>
 								</td>
-								<!-- <td class="text-center">
-								</td>
-								<td class="text-center">
-								</td>
-								<td class="text-center">
-								</td> -->
 								<td class="text-center" style="width: 20%;">
-									<a class="table-link" (click)="selectLocation(professor)">
+									<a class="table-link" (click)="selectLocation(disc.classroom)">
 										<span class="fa-stack">
 											<i class="fa fa-square fa-stack-2x"></i>
 											<!-- <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i> -->

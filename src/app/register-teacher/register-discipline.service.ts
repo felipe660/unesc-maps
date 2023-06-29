@@ -21,4 +21,8 @@ export class RegisterDisciplineService {
   get(): any {
     return this.http.get(`${this.BASE_URI}`);
   }
+
+  getById(id: string): any {
+    return this.http.get(`${this.BASE_URI}/${id}`);
+  }
 }

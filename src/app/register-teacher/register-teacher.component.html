@@ -19,7 +19,7 @@
                             [(ngModel)]="form.name"
                             required
                             minlength="3"
-                            maxlength="20"
+                            maxlength="40"
                             #name="ngModel"
                         />
                         <div class="alert-danger" *ngIf="name.errors && f.submitted">
@@ -105,7 +105,7 @@
                         [(ngModel)]="formCourse.name"
                         required
                         minlength="3"
-                        maxlength="20"
+                        maxlength="40"
                         #name="ngModel"
                     />
                     <div class="alert-danger" *ngIf="name.errors && f.submitted">
@@ -126,6 +126,342 @@
                 
                     <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                         Signup failed!<br />{{ errorMessage }}
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form
+                *ngIf="!isSuccessful"
+                name="formCourse"
+                (ngSubmit)="f.form.valid && onSubmitClass()"
+                #f="ngForm"
+                novalidate
+            >
+            <div class="row">
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Sala</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formClass.name"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Bloco</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formClass.observation"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Latitude</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formClass.latitude"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Longitude</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formClass.longitude"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-9 d-flex justify-content-end" style="align-items: flex-end;">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">Registrar</button>
+                        </div>
+                    
+                        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                            Signup failed!<br />{{ errorMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form
+                *ngIf="!isSuccessful"
+                name="formCourse"
+                (ngSubmit)="f.form.valid && onSubmitDiscipline()"
+                #f="ngForm"
+                novalidate
+            >
+            <div class="row">
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.name"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Sala id</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.classroom"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Curso id</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.course"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Professor id</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.teacher"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Dia</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.day"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Horario de ínicio</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.starting_time"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-7">
+                        <div class="form-group">
+                        <label for="name">Horario de saída</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            [(ngModel)]="formDiscipline.final_time"
+                            required
+                            minlength="3"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-9 d-flex justify-content-end" style="align-items: flex-end;">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">Registrar</button>
+                        </div>
+                    
+                        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                            Signup failed!<br />{{ errorMessage }}
+                        </div>
                     </div>
                 </div>
             </div>

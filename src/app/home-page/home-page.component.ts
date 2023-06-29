@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import turmas from '../components/enums/turmas.json'
 import { Subscription } from 'rxjs';
 import { RegisterTeacherService } from '../register-teacher/register-teacher.service';
+import { RegisterClassService } from '../register-teacher/register-class.service';
+import { RegisterCourseService } from '../register-teacher/register-course.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +15,7 @@ import { RegisterTeacherService } from '../register-teacher/register-teacher.ser
 })
 export class HomePageComponent implements OnInit {
 
-  professores = turmas.turmas;
+  // professores = turmas.turmas;
   filtro: string = '';
   routeSub: Subscription;
   refs: any;
@@ -29,28 +31,57 @@ export class HomePageComponent implements OnInit {
   errorMessage: any;
   isSignUpFailed: boolean;
   professor: any;
+  discipline: any = [{
+  }]
+  ;
 
   constructor(
     private router: Router,
     private route :ActivatedRoute,
     private arrayDayPipe: ArrayDayPipe,
     public registerTeacherService: RegisterTeacherService,
-    public registerDisciplineService: RegisterDisciplineService
+    public registerDisciplineService: RegisterDisciplineService,
+    public registerClassService: RegisterClassService,
+    private registerCourseService: RegisterCourseService
   ) { }
  
   ngOnInit(): void {
-    this.getTeachers();
     this.getDisciplines();
     this.routeSub = this.route.params.subscribe((params) => {
-      console.log(params)
       this.refs = params;
     });
   }
 
-  getDisciplinesByProfessor(id): void {
-    this.registerTeacherService.getById(id).subscribe(
-      data => {
-        console.log(data);
+  getDisciplinesByProfessor(value: any, index: any): any {
+    this.registerTeacherService.getById(value.teacher).subscribe(
+      response => {
+        this.discipline[index].teacherName = response.name
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getClassById(value: any, index: any): any {
+    this.registerClassService.getById(value.classroom).subscribe(
+      response => {
+        console.log('entrou')
+        console.log(response)
+        this.discipline[index].classroom = response;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getCourseById(value: any, index: any): any {
+    this.registerCourseService.getById(value.course).subscribe(
+      response => {
+        this.discipline[index].course = response
       },
       err => {
         this.errorMessage = err.error.message;
@@ -61,21 +92,14 @@ export class HomePageComponent implements OnInit {
 
   getDisciplines(): void {
     this.registerDisciplineService.get().subscribe(
-      data => {
-        console.log(data);
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
-  }
-
-  getTeachers(): void {
-    this.registerTeacherService.get().subscribe(
-      data => {
-        console.log(data);
-        this.professor = data;
+      response => {
+        this.discipline = response;
+        this.discipline.forEach((value, index) => {
+          console.log(value);
+          this.getDisciplinesByProfessor(value,index);
+          this.getCourseById(value,index);
+          this.getClassById(value ,index);
+      });
       },
       err => {
         this.errorMessage = err.error.message;
@@ -85,7 +109,7 @@ export class HomePageComponent implements OnInit {
   }
 
   selectLocation(location: any): void {
-    this.router.navigate(['/map', {lat: location.lat, lng: location.lng} ]);
+    this.router.navigate(['/map', {lat: location.latitude, lng: location.longitude} ]);
   }
 
   goBack():void{
