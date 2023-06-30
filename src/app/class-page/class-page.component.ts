@@ -25,6 +25,7 @@ export class ClassPageComponent implements OnInit {
   modalRef: NgbModalRef;
   selectClass: any;
   isDeleted: boolean = false;
+  hasAutorization: boolean = true;
 
   constructor(
     private router: Router,

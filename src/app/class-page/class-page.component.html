@@ -46,7 +46,7 @@
 										<i class="fa-solid fa-earth-americas fa-stack-1x fa-inverse" style="color: #fff"></i>
 									</span>
 								</a>
-								<a href="#" class="table-link"> 
+								<a href="#" class="table-link" *ngIf="hasAutorization"> 
 									<span class="fa-stack" (click)="select(class, deleteTemplate, 'sm')">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
