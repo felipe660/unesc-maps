@@ -79,8 +79,8 @@ export class ClassPageComponent implements OnInit {
   }
 
   selectLocation(location: any): void {
-    console.log(location)
-    this.router.navigate(['/map', {lat: location.latitude, lng: location.longitude} ]);
+    window.location.href = 'http://maps.google.com/?saddr=Current%20Location&daddr=' + location.latitude + ',' + location.longitude
+    // this.router.navigate(['/map', {lat: location.latitude, lng: location.longitude} ]);
   }
   
   goBack():void{

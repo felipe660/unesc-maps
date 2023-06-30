@@ -207,9 +207,10 @@ export class HomePageComponent implements OnInit {
   }
 
   selectLocation(location: any): void {
-    this.router.navigate(['/map', {lat: location.latitude, lng: location.longitude} ]);
+    window.location.href = 'http://maps.google.com/?saddr=Current%20Location&daddr=' + location.latitude + ',' + location.longitude
+    // this.router.navigate(['/map', {lat: location.latitude, lng: location.longitude} ]);
   }
-
+  
   goBack():void{
     this.router.navigate(['/']);
   }
