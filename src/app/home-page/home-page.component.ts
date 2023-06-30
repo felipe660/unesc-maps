@@ -93,12 +93,15 @@ export class HomePageComponent implements OnInit {
   }
 
   select(selectDisc: any, content: any, size: string): void {
-    console.log(selectDisc)
+    console.log(selectDisc);
     this.selectDiscipline = selectDisc;
     this.formDiscipline = selectDisc;
+    delete this.formDiscipline.teacherName;
+    delete this.formDiscipline.__v;
     this.formDiscipline.course = selectDisc.course._id;
-    console.log(this.formDiscipline)
+    this.formDiscipline.classroom = selectDisc.classroom._id;
     this.openModal(content, size);
+    console.log(this.formDiscipline);
   }
 
   openModal(content: any, s: string) {
@@ -112,7 +115,6 @@ export class HomePageComponent implements OnInit {
   deleteDisc(id: any): void {
     this.registerDisciplineService.delete(id).subscribe(
       response => {
-        console.log(response);
         this.getDisciplines();
       },
       err => {
@@ -126,8 +128,6 @@ export class HomePageComponent implements OnInit {
   getClassById(value: any, index: any): any {
     this.registerClassService.getById(value.classroom).subscribe(
       response => {
-        console.log('entrou')
-        console.log(response)
         this.discipline[index].classroom = response;
       },
       err => {
@@ -140,7 +140,6 @@ export class HomePageComponent implements OnInit {
   getAllCourse(): void {
     this.registerCourseService.get().subscribe(
       data => {
-        console.log(data);
         this.course = data;
       },
       err => {
@@ -153,7 +152,6 @@ export class HomePageComponent implements OnInit {
   getAllTeachers(): void {
     this.registerTeacherService.get().subscribe(
       data => {
-        console.log(data);
         this.teachers = data;
       },
       err => {
@@ -166,7 +164,6 @@ export class HomePageComponent implements OnInit {
   getAllClass(): void {
     this.registerClassService.get().subscribe(
       data => {
-        console.log(data);
         this.class = data;
       },
       err => {
@@ -191,9 +188,9 @@ export class HomePageComponent implements OnInit {
   getDisciplines(): void {
     this.registerDisciplineService.get().subscribe(
       response => {
+        console.log(response);
         this.discipline = response;
         this.discipline.forEach((value, index) => {
-          console.log(value);
           this.getDisciplinesByProfessor(value,index);
           this.getCourseById(value,index);
           this.getClassById(value ,index);
@@ -256,10 +253,8 @@ export class HomePageComponent implements OnInit {
   onSubmitDiscipline(): void {
     const dto = this.formDiscipline;
     console.log(dto)
-
     this.registerDisciplineService.saveOrUpdate(dto).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },

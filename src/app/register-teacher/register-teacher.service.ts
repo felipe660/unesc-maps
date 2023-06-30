@@ -9,9 +9,10 @@ export class RegisterTeacherService {
   readonly BASE_URI = `https://unesc-app-help-freshman.vercel.app/teacher`;
 
   constructor(private http: HttpClient) { }
+  
   saveOrUpdate(dto: any): any {
-    if (dto.id) {
-        return this.http.put(`${this.BASE_URI}/${dto.id}`, dto);
+    if (dto._id) {
+        return this.http.put(`${this.BASE_URI}/${dto._id}`, dto);
     } else {
         return this.http.post(`${this.BASE_URI}`, dto);
     }
