@@ -1,5 +1,10 @@
 <div class="container">
     <div class="row">
+		<div class="col-2 pt-2">
+			<button (click)="goBack()" type="button" class="btn btn-light ps-0 "><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 30px;"></i></button>
+		</div>
+	</div>
+    <div class="row mt-5">
         <div class="col-md-12">
             <form
                 *ngIf="!isSuccessful"
@@ -80,12 +85,13 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-success" *ngIf="isSuccessful">
-                Your registration is successful!
+            <div class="alert alert-success d-flex text-center align-items-center justify-content-center" *ngIf="isSuccessful">
+                <span>Registro inserido com Sucesso!</span>
+                <button class="btn btn-success btn-block ms-5"(click)="changeStatus();">OK</button>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-12">
             <form
                 *ngIf="!isSuccessful"
@@ -132,7 +138,7 @@
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-12">
             <form
                 *ngIf="!isSuccessful"
@@ -141,9 +147,8 @@
                 #f="ngForm"
                 novalidate
             >
-            <div class="row">
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Sala</label>
                         <input
@@ -152,85 +157,7 @@
                             name="name"
                             [(ngModel)]="formClass.name"
                             required
-                            minlength="3"
-                            maxlength="40"
-                            #name="ngModel"
-                        />
-                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
-                            <div *ngIf="name.errors.required">name is required</div>
-                            <div *ngIf="name.errors.minlength">
-                            name must be at least 3 characters
-                            </div>
-                            <div *ngIf="name.errors.maxlength">
-                            name must be at most 20 characters
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-2 col-7">
-                        <div class="form-group">
-                        <label for="name">Bloco</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="name"
-                            [(ngModel)]="formClass.observation"
-                            required
-                            minlength="3"
-                            maxlength="40"
-                            #name="ngModel"
-                        />
-                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
-                            <div *ngIf="name.errors.required">name is required</div>
-                            <div *ngIf="name.errors.minlength">
-                            name must be at least 3 characters
-                            </div>
-                            <div *ngIf="name.errors.maxlength">
-                            name must be at most 20 characters
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-2 col-7">
-                        <div class="form-group">
-                        <label for="name">Latitude</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="name"
-                            [(ngModel)]="formClass.latitude"
-                            required
-                            minlength="3"
-                            maxlength="40"
-                            #name="ngModel"
-                        />
-                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
-                            <div *ngIf="name.errors.required">name is required</div>
-                            <div *ngIf="name.errors.minlength">
-                            name must be at least 3 characters
-                            </div>
-                            <div *ngIf="name.errors.maxlength">
-                            name must be at most 20 characters
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-2 col-7">
-                        <div class="form-group">
-                        <label for="name">Longitude</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="name"
-                            [(ngModel)]="formClass.longitude"
-                            required
-                            minlength="3"
+                            minlength="1"
                             maxlength="40"
                             #name="ngModel"
                         />
@@ -247,7 +174,83 @@
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-9 d-flex justify-content-end" style="align-items: flex-end;">
+                    <div class="offset-1 col-7">
+                        <div class="form-group">
+                        <label for="name">Bloco</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="observation"
+                            [(ngModel)]="formClass.observation"
+                            required
+                            minlength="1"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="offset-1 col-7">
+                        <div class="form-group">
+                        <label for="name">Latitude</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="latitude"
+                            [(ngModel)]="formClass.latitude"
+                            required
+                            minlength="1"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="offset-1 col-7">
+                        <div class="form-group">
+                        <label for="name">Longitude</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="longitude"
+                            [(ngModel)]="formClass.longitude"
+                            required
+                            minlength="1"
+                            maxlength="40"
+                            #name="ngModel"
+                        />
+                        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                            <div *ngIf="name.errors.required">name is required</div>
+                            <div *ngIf="name.errors.minlength">
+                            name must be at least 3 characters
+                            </div>
+                            <div *ngIf="name.errors.maxlength">
+                            name must be at most 20 characters
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex" style="align-items: flex-end;">
                         <div class="form-group">
                             <button class="btn btn-primary btn-block">Registrar</button>
                         </div>
@@ -257,11 +260,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <form
                 *ngIf="!isSuccessful"
@@ -272,7 +274,7 @@
             >
             <div class="row">
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Nome</label>
                         <input
@@ -298,7 +300,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Sala id</label>
                         <input
@@ -324,7 +326,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Curso id</label>
                         <input
@@ -350,7 +352,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Professor id</label>
                         <input
@@ -376,7 +378,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Dia</label>
                         <input
@@ -402,7 +404,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Horario de ínicio</label>
                         <input
@@ -428,7 +430,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-2 col-7">
+                    <div class="offset-1 col-7">
                         <div class="form-group">
                         <label for="name">Horario de saída</label>
                         <input
@@ -467,5 +469,5 @@
             </div>
             </form>
         </div>
-    </div>
+    </div> -->
 </div>

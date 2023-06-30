@@ -11,12 +11,15 @@ import { ArrayFilterPipe } from './components/pipes/array-filter.pipe';
 import { ArrayDayPipe } from './components/pipes/array-day.pipe';
 import { SelectMethodComponent } from './select-method/select-method.component';
 import { DayPageComponent } from './day-page/day-page.component';
-import { PaginationControlsComponentComponent } from './components/pagination-controls-component/pagination-controls-component.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ClassPageComponent } from './class-page/class-page.component';
 import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ArrayFilterClassPipe } from './components/pipes/array-class.pipe';
+import { TeachersPageComponent } from './teachers-page/teachers-page.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 @NgModule({
   declarations: [
@@ -26,17 +29,20 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     ArrayFilterPipe,
     ArrayDayPipe,
+    ArrayFilterClassPipe,
     SelectMethodComponent,
     DayPageComponent,
-    PaginationControlsComponentComponent,
     ClassPageComponent,
     RegisterTeacherComponent,
+    TeachersPageComponent,
+    CoursePageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgSelectModule,
     NgxPaginationModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

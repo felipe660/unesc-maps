@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SelectMethodComponent implements OnInit {
 
+  hasAutorization: boolean = true;
+
   constructor
     (
     private router: Router,
@@ -19,14 +21,20 @@ export class SelectMethodComponent implements OnInit {
 
   navigation(method): void {
     console.log(method)
-    if(method === 'professores'){
+    if(method === 'disciplinas'){
       this.router.navigate(['/home-page'])
+    }
+    if(method === 'professores'){
+      this.router.navigate(['/professores'])
     }
     if(method === 'salas'){
       this.router.navigate(['/class-page'])
     }
     if(method === 'registerTeacher'){
       this.router.navigate(['/registerTeacher'])
+    }
+    if(method === 'cursos'){
+      this.router.navigate(['/cursos'])
     }
   }
 

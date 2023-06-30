@@ -1,0 +1,77 @@
+
+<div class="container">
+    <div class="row">
+		<div class="col-2 pt-2">
+			<button (click)="goBack()" type="button" class="btn btn-light ps-0 "><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 30px;"></i></button>
+		</div>
+	</div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="row">
+                <form
+                *ngIf="!isSuccessful"
+                name="formCourse"
+                (ngSubmit)="f.form.valid && onSubmitCourse()"
+                #f="ngForm"
+                novalidate
+            >
+            <div class="row">
+                <div class="offset-1 col-7">
+                    <div class="form-group">
+                    <label for="name">Nome do Curso</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        [(ngModel)]="formCourse.name"
+                        required
+                        minlength="3"
+                        maxlength="40"
+                        #name="ngModel"
+                    />
+                    <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                        <div *ngIf="name.errors.required">name is required</div>
+                        <div *ngIf="name.errors.minlength">
+                        name must be at least 3 characters
+                        </div>
+                        <div *ngIf="name.errors.maxlength">
+                        name must be at most 20 characters
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-2 d-flex" style="align-items: flex-end;">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                
+                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                    </div>
+                </div>
+            </div>
+            </form>
+            </div>
+            <div class="row">
+                <div class="offset-1 col-7">
+                    <label for="name">Deletar pelo ID</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="courseId"
+                        [(ngModel)]="courseId"
+                        required
+                        minlength="3"
+                        maxlength="40"
+                        #name="ngModel"
+                    />
+            </div>
+            <div class="col-2 d-flex" style="align-items: flex-end;">
+                <div class="form-group">
+                    <button class="btn btn-danger btn-block"(click)="this.deleteDisc(this.formCourse.id)">Deletar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

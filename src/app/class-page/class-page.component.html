@@ -1,8 +1,103 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 	<div class="row">
-		<div class="col-2 pt-2">
+		<div class="col-4 pt-2">
 			<button (click)="goBack()" type="button" class="btn btn-light ps-0 "><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 30px;"></i></button>
+		</div>
+		<div class="col-4 text-center mt-2">
+			<h4>SALAS</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- <div class="main-box clearfix"> -->
+			<div class="table-responsive">
+				<div class="mt-1 mb-5">
+					<div class="d-flex">
+						<input class="form-control me-1" type="search" placeholder="Digite a sala ou bloco" aria-label="Search" (keyup)="filtro = $event.target.value">
+						<!-- <input style="width: 100%;" type="search" placeholder="busca..." (keyup)="filtro = $event.target.value"> -->
+						<button class="btn btn-primary">
+							<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+							<i class="fa-solid fa-filter" style="color: #fff;"></i>
+						</button>
+					</div>
+				</div>
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>Sala</span></th>
+							<th class="text-center"><span>Localização</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr  *ngFor="let class of classRoom | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilterClass: filtro">
+							<td >
+								<!-- <span href="#" class="user-link me-0">{{class.teacherName}}</span> -->
+								<!-- <span class="user-subhead">Disciplina: {{class.name}}</span><br/> -->
+								<span class="user-subhead me-5">Sala: {{class?.name}}</span>
+								<span class="user-subhead me-2"><span>{{class?.observation}}</span></span>
+								<div>
+								</div>
+							</td>
+							<td class="text-center" style="width: 20%;">
+								<a class="table-link" (click)="selectLocation(class)">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<!-- <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i> -->
+										<i class="fa-solid fa-earth-americas fa-stack-1x fa-inverse" style="color: #fff"></i>
+									</span>
+								</a>
+								<a href="#" class="table-link"> 
+									<span class="fa-stack" (click)="select(class, deleteTemplate, 'sm')">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<div class="offset-2 col-8 col-md-4 offset-md-4">
+					<!-- <h4 class="text-center">{{this.pageDay}}</h4> -->
+					<pagination-controls
+						previousLabel="Prev"
+						nextLabel="Next"
+						responsive="true"
+						(pageChange)="handlePageChange($event)"
+					></pagination-controls>
+				</div>
+				<div class="col-2">
+					<div>
+						<!-- Items per Page: -->
+						<select (change)="handlePageSizeChange($event)">
+							<option *ngFor="let size of pageSizes" [value]="size">
+							{{ size }}
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+
+<ng-template #deleteTemplate>
+	<div class="modal-header">
+	  <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+	  </button> -->
+	</div>
+	<div class="modal-body text-center">
+		<div class="div" *ngIf="isDeleted">
+			<h3>Sala de aula deletada com sucesso!</h3>
+			<button class="mt-3 btn btn-primary btn-success btn-block ms-2" (click)="this.closeModal();">Fechar</button>
+		</div>
+	  	<h4 *ngIf="!isDeleted" class="modal-title pull-left">Você deseja remover a sala {{this.selectClass.name}} - {{this.selectClass?.observation}}</h4>
+	</div>
+	<div class="modal-footer text-center" *ngIf="!isDeleted">
+		<button type="button" class="btn btn-primary" (click)="this.modalRef.close()">Cancelar</button>
+		<button type="button" class="btn btn-danger" (click)="deleteClass(this.selectClass._id)">Deletar</button>
+	</div>
+  </ng-template>

@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { RegisterTeacherService } from '../register-teacher/register-teacher.service';
 import { RegisterClassService } from '../register-teacher/register-class.service';
 import { RegisterCourseService } from '../register-teacher/register-course.service';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home-page',
@@ -15,10 +16,18 @@ import { RegisterCourseService } from '../register-teacher/register-course.servi
 })
 export class HomePageComponent implements OnInit {
 
-  // professores = turmas.turmas;
   filtro: string = '';
   routeSub: Subscription;
   refs: any;
+  days: any = [
+    { id: 1, name: 'Segunda-feira' },
+    { id: 2, name: 'Terça-feira' },
+    { id: 3, name: 'Quarta-feira' },
+    { id: 4, name: 'Quinta-feira' },
+    { id: 5, name: 'Sexta-feira' },
+    { id: 6, name: 'Sábado' },
+    { id: 7, name: 'Domingo' },
+  ]
 
   // pagination
   currentIndex = 1;
@@ -27,18 +36,34 @@ export class HomePageComponent implements OnInit {
   page = 1;
   pageSize = 5;
   pageSizes = [5, 10, 20];
-  pageDay: string = "Segunda";
   errorMessage: any;
   isSignUpFailed: boolean;
+  isSuccessful = false;
   professor: any;
-  discipline: any = [{
-  }]
-  ;
+  discipline: any = [{}];
+  selectDiscipline: any;
+  modalRef: NgbModalRef;
+
+  hasAutorization: boolean = true;
+
+  formDiscipline: any = {
+    _id: null,
+    name: null,
+    classroom: null,
+    course:null,
+    day: null,
+    teacher: null,
+    starting_time: null,
+    final_time: null
+  };
+  class: any;
+  course: any;
+  teachers: any;
 
   constructor(
     private router: Router,
     private route :ActivatedRoute,
-    private arrayDayPipe: ArrayDayPipe,
+    private modalService: NgbModal,
     public registerTeacherService: RegisterTeacherService,
     public registerDisciplineService: RegisterDisciplineService,
     public registerClassService: RegisterClassService,
@@ -47,6 +72,9 @@ export class HomePageComponent implements OnInit {
  
   ngOnInit(): void {
     this.getDisciplines();
+    this.getAllClass();
+    this.getAllCourse();
+    this.getAllTeachers();
     this.routeSub = this.route.params.subscribe((params) => {
       this.refs = params;
     });
@@ -64,12 +92,82 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  select(selectDisc: any, content: any, size: string): void {
+    console.log(selectDisc)
+    this.selectDiscipline = selectDisc;
+    this.formDiscipline = selectDisc;
+    this.formDiscipline.course = selectDisc.course._id;
+    console.log(this.formDiscipline)
+    this.openModal(content, size);
+  }
+
+  openModal(content: any, s: string) {
+    this.modalRef = this.modalService.open(content, { size: s });
+  }
+
+  newDiscipline(content, size){
+    this.openModal(content, size);
+  }
+
+  deleteDisc(id: any): void {
+    this.registerDisciplineService.delete(id).subscribe(
+      response => {
+        console.log(response);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+    this.modalRef.close();
+    this.getDisciplines();
+  }
+
   getClassById(value: any, index: any): any {
     this.registerClassService.getById(value.classroom).subscribe(
       response => {
         console.log('entrou')
         console.log(response)
         this.discipline[index].classroom = response;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getAllCourse(): void {
+    this.registerCourseService.get().subscribe(
+      data => {
+        console.log(data);
+        this.course = data;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getAllTeachers(): void {
+    this.registerTeacherService.get().subscribe(
+      data => {
+        console.log(data);
+        this.teachers = data;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  getAllClass(): void {
+    this.registerClassService.get().subscribe(
+      data => {
+        console.log(data);
+        this.class = data;
       },
       err => {
         this.errorMessage = err.error.message;
@@ -117,24 +215,58 @@ export class HomePageComponent implements OnInit {
   }
 
   handlePageChange(event): void {
-    if(event === 1)
-    this.pageDay = "Segunda-feira"
-    if(event === 2)
-    this.pageDay = "Terça-feira"
-    if(event === 3)
-    this.pageDay = "Quarta-feira"
-    if(event === 4)
-    this.pageDay = "Quinta-feira"
-    if(event === 5)
-    this.pageDay = "Sexta-feira"
-    if(event === 6)
-    this.pageDay = "Sábado"
+    // if(event === 1)
+    // this.pageDay = "Segunda-feira"
+    // if(event === 2)
+    // this.pageDay = "Terça-feira"
+    // if(event === 3)
+    // this.pageDay = "Quarta-feira"
+    // if(event === 4)
+    // this.pageDay = "Quinta-feira"
+    // if(event === 5)
+    // this.pageDay = "Sexta-feira"
+    // if(event === 6)
+    // this.pageDay = "Sábado"
     this.page = event;
   }
 
   handlePageSizeChange(event): void {
     this.pageSize = event.target.value;
     this.page = 1;
+  }
+
+  closeModal(): void {
+    this.formDiscipline = {
+      _id: null,
+      name: null,
+      classroom: null,
+      course:null,
+      day: null,
+      teacher: null,
+      starting_time: null,
+      final_time: null
+    };
+    this.isSignUpFailed = false;
+    this.isSuccessful = false;
+    this.modalRef.close();
+    this.getDisciplines();
+  }
+
+  onSubmitDiscipline(): void {
+    const dto = this.formDiscipline;
+    console.log(dto)
+
+    this.registerDisciplineService.saveOrUpdate(dto).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
 }

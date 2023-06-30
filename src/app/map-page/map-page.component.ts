@@ -123,18 +123,18 @@ export class MapPageComponent implements OnInit {
     });
   }
 
-  myInterval = window.setInterval(function(){
-  navigator.geolocation.getCurrentPosition(position => {
-    this.myLoc = position.coords;
-    console.log(this.myLoc.latitude)
-    console.log(this.myLoc.longitude)
+  // myInterval = window.setInterval(function(){
+  // navigator.geolocation.getCurrentPosition(position => {
+  //   this.myLoc = position.coords;
+  //   console.log(this.myLoc.latitude)
+  //   console.log(this.myLoc.longitude)
 
-    this.source = {
-      lat: this.myLoc.latitude,
-      lng: this.myLoc.longitude
-    };
-  })
-  }, 5000);
+  //   this.source = {
+  //     lat: this.myLoc.latitude,
+  //     lng: this.myLoc.longitude
+  //   };
+  // })
+  // }, 5000);
 
   setRoutePolyline() {
     let request = {

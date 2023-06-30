@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterClassService } from './register-class.service';
 import { RegisterCourseService } from './register-course.service';
 import { RegisterDisciplineService } from './register-discipline.service';
@@ -42,6 +43,7 @@ export class RegisterTeacherComponent implements OnInit {
   (
     private registerTeacherService: RegisterTeacherService,
     private registerClassService: RegisterClassService,
+    private router: Router,
     private registerCourseService: RegisterCourseService,
     private registerDisciplineService: RegisterDisciplineService
   ) { }
@@ -151,6 +153,39 @@ export class RegisterTeacherComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  goBack():void{
+    this.router.navigate(['/']);
+  }
+
+  changeStatus(): void {
+    this.form = {
+      name: null,
+    };
+
+    this.formCourse = {
+      name: null,
+    };
+
+    this.formClass = {
+      name: null,
+      observation:null,
+      latitude: null,
+      longitude: null
+    };
+  
+    this.formDiscipline = {
+      name: null,
+      classroom: null,
+      course:null,
+      day: null,
+      teacher: null,
+      starting_time: null,
+      final_time: null
+    };
+
+    this.isSuccessful = false;
   }
 
 }

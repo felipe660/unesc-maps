@@ -175,3 +175,27 @@ ul .ngx-pagination{
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+.form-group{
+	text-align: start;
+}
+
+.form-group input {
+	margin-bottom: 10px;
+}
+
+ng-select {
+	margin-bottom: 10px;
+
+}
+
+input {
+	// border: 1px solid currentcolor;
+	height: 36px;
+}
+input:invalid {
+	// border: 2px dashed red;
+}
+input:invalid:focus {
+	// background-image: linear-gradient(pink, lightgreen);
+}

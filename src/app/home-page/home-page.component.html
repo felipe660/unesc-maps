@@ -1,8 +1,11 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 	<div class="row">
-		<div class="col-2 pt-2">
+		<div class="col-4 pt-2">
 			<button (click)="goBack()" type="button" class="btn btn-light ps-0 "><i class="fa-sharp fa-solid fa-arrow-left" style="font-size: 30px;"></i></button>
+		</div>
+		<div class="col-4 text-center mt-2">
+			<h4>DISCIPLINAS</h4>
 		</div>
 	</div>
 	<div class="row">
@@ -11,18 +14,21 @@
 				<div class="table-responsive">
 					<div class="mt-1 mb-5">
 						<div class="d-flex">
-							<input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" (keyup)="filtro = $event.target.value">
+							<input class="form-control me-1" type="search" placeholder="Digite a disciplina ou nome do professor" aria-label="Search" (keyup)="filtro = $event.target.value">
 							<!-- <input style="width: 100%;" type="search" placeholder="busca..." (keyup)="filtro = $event.target.value"> -->
-							<button class="btn btn-primary">
+							<button *ngIf="hasAutorization" class="btn btn-primary d-flex text-center align-content-center" style="height: 40px;" 
+							style="background-color:#45AF7C;" (click)="newDiscipline(addTemplate, 'md')">
 								<!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-								<i class="fa-solid fa-filter" style="color: #fff;"></i>
+								<i class="fa-solid fa-plus pt-1 pe-1"></i>
+								<p class="mb-0">Nova</p>
+								<!-- <i class="fa-solid fa-filter" style="color: #fff;"></i> -->
 							</button>
 						</div>
 					</div>
 					<table class="table user-list">
 						<thead>
 							<tr>
-								<th><span>Professor</span></th>
+								<th><span>Disciplinas</span></th>
 								<th class="text-center"><span>Localização</span></th>
 							</tr>
 						</thead>
@@ -35,7 +41,7 @@
 									<div>
 									<span class="user-subhead">Dia: {{disc?.day}}</span><br/>
 										<span class="user-subhead me-2">Horario: Dás {{disc.starting_time}} até {{disc.final_time}}</span>
-										<span class="user-subhead me-2">Sala: {{disc.classroom?.name}} - {{disc.classroom?.observation}}</span>
+										<span class="user-subhead me-2">Sala: {{disc.classroom?.name}}</span>
 									</div>
 								</td>
 								<td class="text-center" style="width: 20%;">
@@ -46,26 +52,20 @@
 											<i class="fa-solid fa-earth-americas fa-stack-1x fa-inverse" style="color: #fff"></i>
 										</span>
 									</a>
-									<!-- <a href="#" class="table-link">
-										<span class="fa-stack">
+									<a href="#" class="table-link" *ngIf="hasAutorization"> 
+										<span class="fa-stack" (click)="select(disc, deleteTemplate, 'sm')">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+										</span>
+									</a>
+									<a href="#" class="table-link danger" *ngIf="hasAutorization">
+										<span class="fa-stack" (click)="select(disc, addTemplate, 'sm')">
 											<i class="fa fa-square fa-stack-2x"></i>
 											<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 										</span>
 									</a>
-									<a href="#" class="table-link danger">
-										<span class="fa-stack">
-											<i class="fa fa-square fa-stack-2x"></i>
-											<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-										</span>
-									</a> -->
 								</td>
 							</tr>
-							<br/>
-							<br/>
-							<br/>
-							<br/>
-							<br/>
-							<br/>
 							<!-- <tr  *ngFor="let professor of professores | paginate: { itemsPerPage: pageSize, currentPage: page} | arrayFilter: filtro">
 								<td >
 									<span href="#" class="user-link me-0">{{professor.name}}</span>
@@ -115,4 +115,274 @@
 			
 		</div>
 	</div>
+	</div>
 </div>
+
+<ng-template #deleteTemplate>
+	<div class="modal-header text-center">
+	  <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+	  </button> -->
+	</div>
+	<div class="modal-body text-center">
+	  <h4 class="modal-title pull-left">Você deseja remover a disciplina {{this.selectDiscipline.name}}</h4>
+	</div>
+	<div class="modal-footer text-center d-flex justify-content-center">
+		<button type="button" class="btn btn-primary" (click)="this.modalRef.close()">Cancelar</button>
+		<button type="button" class="btn btn-danger" (click)="deleteDisc(this.selectDiscipline._id)">Deletar</button>
+	</div>
+</ng-template>
+
+<ng-template #addTemplate>
+	<div class="modal-header justify-content-center" *ngIf="!isSuccessful">
+			<h5 class="modal-title pull-left">Adicionar disciplina</h5>
+		<!-- <button type="button" class="close pull-right" aria-label="Close" (click)="this.modalRef.close()">
+			<span aria-hidden="true">&times;</span>
+		</button> -->
+	</div>
+	<div class="modal-body text-center">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="div" *ngIf="isSuccessful">
+					<h3>Disciplina inserida com sucesso!</h3>
+					<button class="mt-3 btn btn-primary btn-success btn-block ms-2" (click)="this.closeModal();">Fechar</button>
+				</div>
+				<form
+					*ngIf="!isSuccessful"
+					name="formCourse"
+					(ngSubmit)="f.form.valid && onSubmitDiscipline()"
+					#f="ngForm"
+					novalidate
+				>
+				<div class="row ms-0">
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Nome</label>
+							<input
+								type="text"
+								class="form-control"
+								name="name"
+								[(ngModel)]="formDiscipline.name"
+								required
+								minlength="3"
+								maxlength="40"
+								#name="ngModel"
+							/>
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Sala</label>
+							<ng-select [items]="this.class" 
+								bindLabel="name"
+								bindValue="_id" 
+								[(ngModel)]="formDiscipline.classroom"
+								#name="ngModel"
+								name="classroom"
+								required>
+							</ng-select>
+							<!-- <input
+								type="text"
+								class="form-control"
+								name="name"
+								[(ngModel)]="formDiscipline.classroom"
+								required
+								minlength="3"
+								maxlength="40"
+								#name="ngModel"
+							/> -->
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Curso</label>
+							<ng-select [items]="this.course" 
+								bindLabel="name" 
+								bindValue="_id" 
+								[(ngModel)]="formDiscipline.course"
+								#name="ngModel"
+								name="course"
+								required>
+							</ng-select>
+							<!-- <input
+								type="text"
+								class="form-control"
+								name="name"
+								[(ngModel)]="formDiscipline.course"
+								required
+								minlength="3"
+								maxlength="40"
+								#name="ngModel"
+							/> -->
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Professor</label>
+							<ng-select [items]="this.teachers" 
+								bindLabel="name" 
+								bindValue="_id" 
+								[(ngModel)]="formDiscipline.teacher"
+								#name="ngModel"
+								name="teacher"
+								required>
+							</ng-select>
+							<!-- <input
+								type="text"
+								class="form-control"
+								name="name"
+								[(ngModel)]="formDiscipline.teacher"
+								required
+								minlength="3"
+								maxlength="40"
+								#name="ngModel"
+							/> -->
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Dia</label>
+							<ng-select 
+								[(ngModel)]="formDiscipline.day"
+								type="text"
+								name="name"
+								required
+								#name="ngModel">
+								<ng-option *ngFor="let day of days" [value]="day.name">{{day.name}}</ng-option>
+							 </ng-select>
+							<!-- <input
+								type="text"
+								class="form-control"
+								name="name"
+								[(ngModel)]="formDiscipline.day"
+								required
+								minlength="3"
+								maxlength="40"
+								#name="ngModel"
+							/> -->
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Horario de ínicio</label>
+							<input
+								type="text"
+								placeholder="HH:mm"
+								class="form-control"
+								name="starting_time"
+								[(ngModel)]="formDiscipline.starting_time"
+								required
+								minlength="5"
+								maxlength="5"
+								#name="ngModel"
+							/>
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ms-0">
+						<div class="offset-1 col-10">
+							<div class="form-group">
+							<label for="name">Horario de saída</label>
+							<input
+								type="text"
+								class="form-control"
+								placeholder="HH:mm"
+								name="final_time"
+								[(ngModel)]="formDiscipline.final_time"
+								required
+								minlength="5"
+								maxlength="5"
+								#name="ngModel"
+							/>
+							<div class="alert-danger" *ngIf="name.errors && f.submitted">
+								<div *ngIf="name.errors.required">name is required</div>
+								<div *ngIf="name.errors.minlength">
+								name must be at least 3 characters
+								</div>
+								<div *ngIf="name.errors.maxlength">
+								name must be at most 20 characters
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-3 ms-0">
+						<div class="col-12 d-flex justify-content-center">
+								<button type="button" class="btn btn-danger" (click)="this.modalRef.close();">Cancelar</button>
+								<button class="btn btn-primary btn-success btn-block ms-2">Registrar</button>
+								<!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+									Signup failed!<br />{{ errorMessage }}
+								</div> -->
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</ng-template>

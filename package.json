@@ -1,5 +1,5 @@
 {
-  "homepage" : "https://felipe660.github.io/",
+  "homepage": "https://felipe660.github.io/",
   "name": "unesc-maps",
   "version": "0.0.0",
   "scripts": {
@@ -26,6 +26,8 @@
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@ng-bootstrap/ng-bootstrap": "^8.0.4",
+    "@ng-select/ng-select": "^5.1.0",
     "@types/googlemaps": "^3.39.13",
     "angular-cli-ghpages": "^1.0.6",
     "bootstrap": "^5.2.3",

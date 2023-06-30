@@ -22,6 +22,10 @@ export class RegisterDisciplineService {
     return this.http.get(`${this.BASE_URI}`);
   }
 
+  delete(id: string): any {
+    return this.http.delete(`${this.BASE_URI}/${id}`);
+  }
+
   getById(id: string): any {
     return this.http.get(`${this.BASE_URI}/${id}`);
   }
