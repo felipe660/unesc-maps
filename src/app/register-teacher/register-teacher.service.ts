@@ -25,7 +25,7 @@ export class RegisterTeacherService {
     return this.http.get(`${this.BASE_URI}/${id}`);
   }
   
-  // remove(id: number): any {
-  //   return this.http.delete(`${this.BASE_URI}/${id}`);
-  // }
+  delete(id: string): any {
+    return this.http.delete(`${this.BASE_URI}/${id}`);
+  }
 }

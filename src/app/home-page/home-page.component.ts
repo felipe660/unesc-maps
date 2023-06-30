@@ -113,6 +113,7 @@ export class HomePageComponent implements OnInit {
     this.registerDisciplineService.delete(id).subscribe(
       response => {
         console.log(response);
+        this.getDisciplines();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -120,7 +121,6 @@ export class HomePageComponent implements OnInit {
       }
     );
     this.modalRef.close();
-    this.getDisciplines();
   }
 
   getClassById(value: any, index: any): any {
